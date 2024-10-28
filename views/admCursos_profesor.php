@@ -48,7 +48,7 @@ if(isset($_SESSION["usu_id"])){
                                         <th>Curso</th>
                                         <th>Tipo de curso</th>
                                         <th>Año</th>
-                                        <th>docente</th>
+                                        <th>Docente</th>
                                         <th></th>
                                         <th></th>
                                     </tr>

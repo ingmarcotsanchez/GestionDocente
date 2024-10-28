@@ -11,7 +11,11 @@ function guardaryeditar(e){
     //console.log("prueba");
     e.preventDefault();
     var formData = new FormData($("#cursos_profesor_form")[0]);
-    //console.log(formData);
+    console.log(formData);
+    var totalfiles = $('#fileElem').val().length;
+        for (var i = 0; i < totalfiles; i++) {
+            formData.append("files[]", $('#fileElem')[0].files[i]);
+        }
     $.ajax({
         url: "/GestionDocente/controller/cursos.php?opc=guardaryeditar",
         type: "POST",
@@ -39,7 +43,7 @@ $(document).ready(function(){
         dropdownParent: $("#modalcrearCurso_profesor")
     });
     
-    $('#profesor').select2({
+    $('#doc_id').select2({
         dropdownParent: $("#modalcrearCurso_profesor")
     });
 
