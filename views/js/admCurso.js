@@ -1,7 +1,7 @@
 var usu_id = $('#usu_idx').val();
 
 function init(){
-    $("#cursos_form").on("submit",function(e){
+    $("#cursos_profesor_form").on("submit",function(e){
         guardaryeditar(e);
     });
 
@@ -10,10 +10,10 @@ function init(){
 function guardaryeditar(e){
     //console.log("prueba");
     e.preventDefault();
-    var formData = new FormData($("#cursos_form")[0]);
+    var formData = new FormData($("#cursos_profesor_form")[0]);
     //console.log(formData);
     $.ajax({
-        url: "/ISUM/controller/curso.php?opc=guardaryeditar",
+        url: "/GestionDocente/controller/cursos.php?opc=guardaryeditar",
         type: "POST",
         data: formData,
         contentType: false,
@@ -21,8 +21,8 @@ function guardaryeditar(e){
         
         success: function(data){
             console.log(data);
-            $('#cursos_data').DataTable().ajax.reload();
-            $('#modalcrearCurso').modal('hide');
+            $('#cursos_profesor_data').DataTable().ajax.reload();
+            $('#modalcrearCurso_profesor').modal('hide');
 
             Swal.fire({
                 title: 'Correcto!',
@@ -35,20 +35,20 @@ function guardaryeditar(e){
 }
 
 $(document).ready(function(){
-    $('#id_categoria').select2({
-        dropdownParent: $("#modalcrearCurso")
+    $('#tipo_id').select2({
+        dropdownParent: $("#modalcrearCurso_profesor")
     });
     
     $('#profesor').select2({
-        dropdownParent: $("#modalcrearCurso")
+        dropdownParent: $("#modalcrearCurso_profesor")
     });
 
-    select_categoria();
+    select_tipo();
 
     select_instructor();
 
     
-    $('#cursos_data').DataTable({
+    $('#cursos_profesor_data').DataTable({
         "aProcessing": true,
         "aServerSide": true,
         dom: 'Bfrtip',
@@ -57,7 +57,7 @@ $(document).ready(function(){
             'csvHtml5',
         ],
         "ajax":{
-            url:"/ISUM/controller/curso.php?opc=listar",
+            url:"/GestionDocente/controller/cursos.php?opc=listar",
             type:"post"
         },
         "bDestroy": true,
@@ -95,26 +95,24 @@ $(document).ready(function(){
 
 function nuevo(){
     $('#titulo_modal').html('Nuevo Curso');
-    $('#cursos_form')[0].reset();
-     select_categoria();
+    $('#cursos_profesor_form')[0].reset();
+     select_tipo();
      select_instructor();
-    $('#modalcrearCurso').modal('show');
+    $('#modalcrearCurso_profesor').modal('show');
 }
 
 function editar(cur_id){
-    $.post("/ISUM/controller/curso.php?opc=mostrar",{cur_id:cur_id},function (data){
+    $.post("/GestionDocente/controller/cursos.php?opc=mostrar",{cur_id:cur_id},function (data){
         data = JSON.parse(data);
         //console.log(data);
-        $('#cur_id').val(data.cur_id);
-        $('#nombre').val(data.curso);
-        $('#descripcion').val(data.descripcion);
-        $('#fecha_ini').val(data.fecha_ini);
-        $('#fecha_fin').val(data.fecha_fin);
-        $('#id_categoria').val(data.id_categoria).trigger('change');
-        $('#profesor').val(data.profesor).trigger('change');
+        $('#cur_prof_id').val(data.cur_prof_id);
+        $('#cur_prof_nom').val(data.cur_prof_nom);
+        $('#tipo_id').val(data.tipo_id).trigger('change');
+        $('#cur_prof_anno').val(data.cur_prof_anno);
+        $('#prof_id').val(data.prof_id).trigger('change');
     });
     $('#titulo_modal').html('Editar Curso');
-    $('#modalcrearCurso').modal('show');
+    $('#modalcrearCurso_profesor').modal('show');
 }
 
 function eliminar(cur_id){
@@ -127,8 +125,8 @@ function eliminar(cur_id){
         cancelButtonText: 'Cancelar',
     }).then((result)=>{
         if(result.value){
-            $.post("/ISUM/controller/curso.php?opc=eliminar",{cur_id:cur_id},function (data){
-                $('#cursos_data').DataTable().ajax.reload();
+            $.post("/GestionDocente/controller/cursos.php?opc=eliminar",{cur_id:cur_id},function (data){
+                $('#cursos_profesor_data').DataTable().ajax.reload();
                 Swal.fire({
                     title: 'Correcto!',
                     text: 'Se Elimino Correctamente',
@@ -143,15 +141,15 @@ function eliminar(cur_id){
 
 
 
-function select_categoria(){
-    $.post("/ISUM/controller/categoria.php?opc=inputselect",function (data){
-        $('#id_categoria').html(data);
+function select_tipo(){
+    $.post("/GestionDocente/controller/tipo.php?opc=inputselect",function (data){
+        $('#tipo_id').html(data);
     });
 }
 
 function select_instructor(){
-    $.post("/ISUM/controller/instructor.php?opc=combo",function (data){
-        $('#profesor').html(data);
+    $.post("/GestionDocente/controller/profesor.php?opc=combo",function (data){
+        $('#doc_id').html(data);
     });
 }
 

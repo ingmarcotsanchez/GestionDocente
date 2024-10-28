@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalcrearProducto_profesor" data-backdrop="static" data-keyboard="false">
+<div class="modal fade" id="modalcrearCurso_profesor" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -7,49 +7,47 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="post" id="productos_profesor_form">
+            <form method="post" id="cursos_profesor_form">
                 <div class="modal-body">
                     
-                    <input type="hidden" name="prod_prof_id" id="prod_prof_id">
+                    <input type="hidden" name="cur_prof_id" id="cur_prof_id">
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                <label for="prod_prof_nom">Título del Curso</label>
-                                <input type="text" class="form-control" name="prod_prof_nom" id="prod_prof_nom" placeholder="Ingrese el título del curso">
+                                <label for="cur_prof_nom">Título del Curso</label>
+                                <input type="text" class="form-control" name="cur_prof_nom" id="cur_prof_nom" placeholder="Ingrese el título del curso">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="prod_prof_tipo">Tipo</label>
-                                <select class="form-control select2" name="prod_prof_tipo" id="prod_prof_tipo" data-placeholder="Seleccione">
+                                <label for="tipo_id">Tipo</label>
+                                <select class="form-control select2" style="width:100%" name="tipo_id" id="tipo_id" data-placeholder="Seleccione">
                                     <option label="Seleccione"></option>
-                                    <option value="AD">Artículo Divulgativo</option>
-                                    <option value="AC">Artículo Cientifico</option>
-                                    <option value="AS">Artículo Scopus</option>
-                                    <option value="DS">Desarrollo de Software</option>
-                                    <option value="PI">Ponencia Interna</option>
-                                    <option value="PE">Ponencia Externa</option>
-                                    <option value="CL">Capitulo Libro</option>
-                                    <option value="LI">Libro</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="prod_prof_anno">Año</label>
-                                <input type="text" class="form-control" name="prod_prof_anno" id="prod_prof_anno" placeholder="Ingrese el Año de elaboración">
+                                <label for="cur_prof_anno">Año</label>
+                                <input type="text" class="form-control" name="cur_prof_anno" id="cur_prof_anno" placeholder="Ingrese el Año de elaboración">
                             </div>
                         </div>
                     </div> 
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-6">
                             <div class="form-group">
-                                <label for="prof_id">Profesor</label>
-                                <select class="form-control select2" style="width:100%" name="prof_id" id="prof_id" data-placeholder="Seleccione">
+                                <label for="doc_id">Profesor</label>
+                                <select class="form-control select2" style="width:100%" name="doc_id" id="doc_id" data-placeholder="Seleccione">
                                     <option label="Seleccione"></option>
                                 </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="fileElem">Certificado</label>
+                                <input type="file" class="form-control" id="fileElem" name="fileElem" multiple>
                             </div>
                         </div>
                     </div>   

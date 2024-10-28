@@ -87,7 +87,7 @@
           
           <?php if($_SESSION["usu_rol"] == "ADMO" || $_SESSION["usu_rol"] == "DOC"):?>
           <li class="nav-item">
-            <a href="<?php echo BASE_URL; ?>admCursos.php" class="nav-link">
+            <a href="<?php echo BASE_URL; ?>admCursos_profesor.php" class="nav-link">
               <i class="nav-icon fas fa-plus text-light"></i>
               <p class="text">Cursos</p>
             </a>

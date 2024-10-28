@@ -38,17 +38,17 @@ if(isset($_SESSION["usu_id"])){
                 <div class="container-fluid">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Admón Productos de Profesores</h3>
+                            <h3 class="card-title">Admón Cursos de Profesores</h3>
                         </div>
                         <div class="card-body">
                             <button type="button" class="btn btn-outline-primary mb-2" onclick="nuevo()">Crear Producto</button>
-                            <table id="productos_profesor_data" class="table display responsive wrap">
+                            <table id="cursos_profesor_data" class="table display responsive wrap">
                                 <thead>
                                     <tr>
-                                        <th>Producto</th>
-                                        <th>Tipo de producto</th>
+                                        <th>Curso</th>
+                                        <th>Tipo de curso</th>
                                         <th>Año</th>
-                                        <th>Profesor</th>
+                                        <th>docente</th>
                                         <th></th>
                                         <th></th>
                                     </tr>
@@ -68,10 +68,9 @@ if(isset($_SESSION["usu_id"])){
         ?>
     </div>
     <!-- /.Site warapper -->
-    <?php require_once("admProducto_profesorModal.php"); ?>
+    <?php require_once("admCursos_profesorModal.php"); ?>
     <?php include("modulos/js.php"); ?>
-    <script type="text/javascript" src="js/admProductos_profesor.js"></script>
-    <script type="text/javascript" src="notificacion.js"></script>
+    <script type="text/javascript" src="js/admCurso.js"></script>
 </body>
 </html>
 <?php
