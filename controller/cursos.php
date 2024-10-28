@@ -3,7 +3,7 @@
     require_once("../config/conexion.php");
     require_once("../models/Cursos.php");
     $cursos_profesor = new Cursos_profesor();
-    require_once("../models/Documento.php");
+    require_once("../models/Certificado.php");
     $certificado = new Certificado();
     /*TODO: opciones del controlador */
     switch($_GET["opc"]){
