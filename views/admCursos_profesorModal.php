@@ -14,6 +14,14 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
+                                <label for="cur_image">Foto</label>
+                                <input type="file" class="cur_image" name="cur_image">
+                                <p class="help-block">Peso máximo de la imagen 2MB y <strong>Formato PNG</strong></p>
+                                <img src="image/certificados/default/default.png" class="img-thumbnail previsualizar" width="100px">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
                                 <label for="cur_prof_nom">Título del Curso</label>
                                 <input type="text" class="form-control" name="cur_prof_nom" id="cur_prof_nom" placeholder="Ingrese el título del curso">
                             </div>
