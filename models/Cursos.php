@@ -1,17 +1,23 @@
 <?php
     class Cursos_profesor extends Conectar{
         /* TODO: Insertar registro  */
-        public function insert_cursos_profesor($cur_prof_nom,$tipo_id,$cur_prof_anno,$doc_id){
+        public function insert_cursos_profesor($cur_image,$cur_prof_nom,$tipo_id,$cur_prof_anno,$doc_id){
             $conectar= parent::conexion();
+            parent::set_names();
             /* consulta sql */
             $sql="INSERT INTO cursos_profesor (cur_prof_id,cur_prof_nom,tipo_id,cur_prof_anno,doc_id,fech_crea,est) 
-                            VALUES (null,?,?,?,?,now(),1);";
+                            VALUES (null,?,?,?,?,?,now(),1);";
             $sql = $conectar->prepare($sql);
-            $sql->bindParam(1,$cur_prof_nom);
-            $sql->bindParam(2,$tipo_id);
-            $sql->bindParam(3,$cur_prof_anno);
-            $sql->bindParam(4,$doc_id);
+            $sql->bindParam(1,$cur_image);
+            $sql->bindParam(2,$cur_prof_nom);
+            $sql->bindParam(3,$tipo_id);
+            $sql->bindParam(4,$cur_prof_anno);
+            $sql->bindParam(5,$doc_id);
             $sql->execute();
+            $sql1="SELECT last_insert_id() as 'cur_prof_id';";
+            $sql1=$conectar->prepare($sql1);
+            $sql1->execute();
+            return $resultado=$sql1->fetchAll(pdo::FETCH_ASSOC);
         }
 
         public function cursos_profesor_id($cur_prof_id){

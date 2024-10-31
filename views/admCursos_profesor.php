@@ -41,7 +41,7 @@ if(isset($_SESSION["usu_id"])){
                             <h3 class="card-title">Admón Cursos de Profesores</h3>
                         </div>
                         <div class="card-body">
-                            <button type="button" class="btn btn-outline-primary mb-2" onclick="nuevo()">Crear Producto</button>
+                            <button type="button" class="btn btn-outline-primary mb-2" onclick="nuevo()">Crear Curso</button>
                             <table id="cursos_profesor_data" class="table display responsive wrap">
                                 <thead>
                                     <tr>
@@ -49,6 +49,7 @@ if(isset($_SESSION["usu_id"])){
                                         <th>Tipo de curso</th>
                                         <th>Año</th>
                                         <th>Docente</th>
+                                        <th></th>
                                         <th></th>
                                         <th></th>
                                     </tr>
