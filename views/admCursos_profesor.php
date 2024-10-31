@@ -1,5 +1,5 @@
 <?php
-define( "BASE_URL", "/ISUM/views/");
+define( "BASE_URL", "/GestionDocente/views/");
 /* Llamamos al archivo de conexion.php */
 require_once("../config/conexion.php");
 if(isset($_SESSION["usu_id"])){

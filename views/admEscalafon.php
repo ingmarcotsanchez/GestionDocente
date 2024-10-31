@@ -10,7 +10,7 @@ if(isset($_SESSION["usu_id"])){
   <?php
     include("modulos/head.php");
   ?>
-  <title>ISUM | Escalafón</title>
+  <title>GestionDocente | Escalafón</title>
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->

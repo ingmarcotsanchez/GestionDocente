@@ -13,7 +13,7 @@ function guardaryeditar(e){
     var formData = new FormData($("#productos_profesor_form")[0]);
     //console.log(formData);
     $.ajax({
-        url: "/ISUM/controller/producto_profesor.php?opc=guardaryeditar",
+        url: "/GestionDocente/controller/producto_profesor.php?opc=guardaryeditar",
         type: "POST",
         data: formData,
         contentType: false,
@@ -50,7 +50,7 @@ $(document).ready(function(){
             'csvHtml5',
         ],
         "ajax":{
-            url:"/ISUM/controller/producto_profesor.php?opc=listar",
+            url:"/GestionDocente/controller/producto_profesor.php?opc=listar",
             type:"post"
         },
         "bDestroy": true,
@@ -93,7 +93,7 @@ function nuevo(){
 }
 
 function editar(prod_prof_id){
-    $.post("/ISUM/controller/producto_profesor.php?opc=mostrar",{prod_prof_id:prod_prof_id},function (data){
+    $.post("/GestionDocente/controller/producto_profesor.php?opc=mostrar",{prod_prof_id:prod_prof_id},function (data){
         data = JSON.parse(data);
         //console.log(data);
         $('#prod_prof_id').val(data.prod_prof_id);
@@ -116,7 +116,7 @@ function eliminar(prod_prof_id){
         cancelButtonText: 'Cancelar',
     }).then((result)=>{
         if(result.value){
-            $.post("/ISUM/controller/producto_profesor.php?opc=eliminar",{prod_prof_id:prod_prof_id},function (data){
+            $.post("/GestionDocente/controller/producto_profesor.php?opc=eliminar",{prod_prof_id:prod_prof_id},function (data){
                 $('#productos_profesor_data').DataTable().ajax.reload();
                 Swal.fire({
                     title: 'Correcto!',
@@ -130,7 +130,7 @@ function eliminar(prod_prof_id){
 
 }
 function select_profesor(){
-    $.post("/ISUM/controller/profesor.php?opc=combo",function (data){
+    $.post("/GestionDocente/controller/profesor.php?opc=combo",function (data){
         $('#prof_id').html(data);
     });
 }
