@@ -45,11 +45,12 @@ if(isset($_SESSION["usu_id"])){
                             <table id="cursos_profesor_data" class="table display responsive wrap">
                                 <thead>
                                     <tr>
+                                   <!--  <th></th> -->
                                         <th>Curso</th>
                                         <th>Tipo de curso</th>
                                         <th>Año</th>
                                         <th>Docente</th>
-                                        <th></th>
+                                       
                                         <th></th>
                                         <th></th>
                                     </tr>

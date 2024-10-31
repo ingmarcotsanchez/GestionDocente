@@ -5,7 +5,7 @@
             $conectar= parent::conexion();
             parent::set_names();
             /* consulta sql */
-            $sql="INSERT INTO cursos_profesor (cur_prof_id,cur_prof_nom,tipo_id,cur_prof_anno,doc_id,fech_crea,est) 
+            $sql="INSERT INTO cursos_profesor (cur_prof_id,cur_image,cur_prof_nom,tipo_id,cur_prof_anno,doc_id,fech_crea,est) 
                             VALUES (null,?,?,?,?,?,now(),1);";
             $sql = $conectar->prepare($sql);
             $sql->bindParam(1,$cur_image);

@@ -44,7 +44,7 @@
     
                         }else{
                             $countfiles = count($_FILES['files']['name']);
-                            $ruta = "../document/certificaos/".$output["doc_id"]."/";
+                            $ruta = "../document/certificados/".$output["doc_id"]."/";
                             $files_arr = array();
     
                             if (!file_exists($ruta)) {
@@ -73,26 +73,26 @@
                     }
                     
                     
-                    if($_FILES["doc_image"]["type"] == "image/jpeg"){
+                    if($_FILES["cur_image"]["type"] == "image/jpeg"){
                         $aleatorio = mt_rand(100,999);
                         $ruta = "/images/cursos/".$_POST["cur_prof_nom"].$_POST["cur_prof_anno"]."/".$aleatorio.".jpg";
-                        $origen = imagecreatefromjpeg($_FILES["doc_image"]["tmp_name"]);						
+                        $origen = imagecreatefromjpeg($_FILES["cur_image"]["tmp_name"]);						
                         $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
                         imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
                         imagejpeg($destino, $r.$ruta);
                     }
-                    if($_FILES["doc_image"]["type"] == "image/png"){
+                    if($_FILES["cur_image"]["type"] == "image/png"){
                         $aleatorio = mt_rand(100,999);
                         $ruta = "/images/cursos/".$_POST["cur_prof_nom"].$_POST["cur_prof_anno"]."/".$aleatorio.".jpg";
-                        $origen = imagecreatefrompng($_FILES["doc_image"]["tmp_name"]);
+                        $origen = imagecreatefrompng($_FILES["cur_image"]["tmp_name"]);
                         $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
                         imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
                         imagepng($destino, $r.$ruta);
                     }
-                    if($_FILES["doc_image"]["type"] == "image/jpg"){
+                    if($_FILES["cur_image"]["type"] == "image/jpg"){
                         $aleatorio = mt_rand(100,999);
                         $ruta = "/images/cursos/".$_POST["cur_prof_nom"].$_POST["cur_prof_anno"]."/".$aleatorio.".jpg";
-                        $origen = imagecreatefrompng($_FILES["doc_image"]["tmp_name"]);
+                        $origen = imagecreatefrompng($_FILES["cur_image"]["tmp_name"]);
                         $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
                         imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
                         imagepng($destino, $r.$ruta);
@@ -143,12 +143,12 @@
             $data= Array();
             foreach($datos as $row){
                 $sub_array = array();
-                $imgDatos = $row["cur_image"];
-                $sub_array[] = "<img src='../".$row["cur_image"]."' class='img-responsive' width='30px'>";
+                /* $imgDatos = $row["cur_image"];
+                $sub_array[] = "<img src='../".$row["cur_image"]."' class='img-responsive' width='30px'>"; */
                 $sub_array[] = $row["cur_prof_nom"];
                 $sub_array[] = $row["tipo_nom"];
                 $sub_array[] = $row["cur_prof_anno"];
-                $sub_array[] = $row["doc_nom"] ." ". $row["prof_ape"];
+                $sub_array[] = $row["doc_nom"] ." ". $row["doc_ape"];
                 //$sub_array[] = '<a href="../document/certificados/'.$_POST["doc_id"].'/'.$row["cur_prof_nom"].'" target="_blank">'.$row["cur_prof_nom"].'</a>';
                 /* TODO: Formato HTML para abrir el documento o descargarlo en una nueva ventana */
                 $sub_array[] = '<button type="button" onClick="editar(' .$row["cur_prof_id"]. ');"  id="' .$row["cur_prof_id"] . '" class="btn btn-outline-success btn-icon"><i class="bx bx-edit-alt"></i></button>';

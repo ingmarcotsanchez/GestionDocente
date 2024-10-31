@@ -162,29 +162,9 @@
                 foreach($datos as $row){
                     $sub_array = array();
                     $imgDatos = $row["doc_image"];
-                    /* header("Content-type: image/jpg"); 
-                    if($row["doc_image"] == ""){
-                        $sub_array[] = "<img src='../public/img/carousel/' class='img-circle'>";
-                    }else{
-                        $sub_array[] = "<img src='".$row["carousel_image"]."' class='img-responsive' width='50px'>";
-                    } */
-                    //columnas de las tablas a mostrar segun select del modelo
                     $sub_array[] = "<img src='../".$row["doc_image"]."' class='img-responsive' width='30px'>";
-                    //$sub_array[] = $row["doc_image"];
                     $sub_array[] = $row["doc_dni"];
                     $sub_array[] = $row["doc_nom"] ." ". $row["doc_ape"];
-                    //$sub_array[] = $row["prof_correo"];
-                    /* if($row["doc_niv"] == 'P'){
-                        $sub_array[] = "Pregrado";
-                    }elseif ($row["doc_niv"] == 'E'){
-                        $sub_array[] = "Especialista";
-                    }elseif ($row["doc_niv"] == 'M'){
-                        $sub_array[] = "Magister";
-                    }elseif ($row["doc_niv"] == 'D'){
-                        $sub_array[] = "Doctor";
-                    }else{
-                        $sub_array[] = "Sin escalafón";
-                    } */
                     $sub_array[] = $row["doc_telf"];
                     
                     $sub_array[] = $row["esc_nombre"];

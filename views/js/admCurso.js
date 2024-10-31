@@ -38,6 +38,52 @@ function guardaryeditar(e){
     });
 }
 
+$(".cur_image").change(function(){
+
+	var imagen = this.files[0];
+	
+	/*=============================================
+  	VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG
+  	=============================================*/
+
+  	if(imagen["type"] != "image/jpeg" && imagen["type"] != "image/png" && imagen["type"] != "image/jpg"){
+
+  		$(".cur_image").val("");
+
+  		 swal({
+		      title: "Error al subir la imagen",
+		      text: "¡La imagen debe estar en formato JPG o PNG!",
+		      type: "error",
+		      confirmButtonText: "¡Cerrar!"
+		    });
+
+  	}else if(imagen["size"] > 2000000){
+
+  		$(".cur_image").val("");
+
+  		 swal({
+		      title: "Error al subir la imagen",
+		      text: "¡La imagen no debe pesar más de 2MB!",
+		      type: "error",
+		      confirmButtonText: "¡Cerrar!"
+		    });
+
+  	}else{
+
+  		var datosImagen = new FileReader;
+  		datosImagen.readAsDataURL(imagen);
+
+  		$(datosImagen).on("load", function(event){
+
+  			var rutaImagen = event.target.result;
+
+  			$(".previsualizar").attr("src", rutaImagen);
+
+  		})
+
+  	}
+})
+
 $(document).ready(function(){
     $('#tipo_id').select2({
         dropdownParent: $("#modalcrearCurso_profesor")
@@ -105,21 +151,21 @@ function nuevo(){
     $('#modalcrearCurso_profesor').modal('show');
 }
 
-function editar(cur_id){
-    $.post("/GestionDocente/controller/cursos.php?opc=mostrar",{cur_id:cur_id},function (data){
+function editar(cur_prof_id){
+    $.post("/GestionDocente/controller/cursos.php?opc=mostrar",{cur_prof_id:cur_prof_id},function (data){
         data = JSON.parse(data);
         //console.log(data);
         $('#cur_prof_id').val(data.cur_prof_id);
         $('#cur_prof_nom').val(data.cur_prof_nom);
         $('#tipo_id').val(data.tipo_id).trigger('change');
         $('#cur_prof_anno').val(data.cur_prof_anno);
-        $('#prof_id').val(data.prof_id).trigger('change');
+        $('#doc_id').val(data.doc_id).trigger('change');
     });
     $('#titulo_modal').html('Editar Curso');
     $('#modalcrearCurso_profesor').modal('show');
 }
 
-function eliminar(cur_id){
+function eliminar(cur_prof_id){
     Swal.fire({
         title: 'Eliminar!',
         text: 'Desea eleminar el Registro?',
@@ -129,7 +175,7 @@ function eliminar(cur_id){
         cancelButtonText: 'Cancelar',
     }).then((result)=>{
         if(result.value){
-            $.post("/GestionDocente/controller/cursos.php?opc=eliminar",{cur_id:cur_id},function (data){
+            $.post("/GestionDocente/controller/cursos.php?opc=eliminar",{cur_prof_id:cur_prof_id},function (data){
                 $('#cursos_profesor_data').DataTable().ajax.reload();
                 Swal.fire({
                     title: 'Correcto!',
@@ -146,7 +192,7 @@ function eliminar(cur_id){
 
 
 function select_tipo(){
-    $.post("/GestionDocente/controller/tipo.php?opc=inputselect",function (data){
+    $.post("/GestionDocente/controller/tipo.php?opc=combo",function (data){
         $('#tipo_id').html(data);
     });
 }
